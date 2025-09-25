@@ -1,0 +1,34 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import './assets/styles/global.scss';
+
+@layer base {
+  body {
+    @apply bg-nature-light text-nature-dark font-sans;
+    margin: 0;
+    padding: 0;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  .btn-nature {
+    @apply bg-nature-primary text-white px-6 py-3 rounded-lg shadow-lg hover:bg-nature-dark transition-all duration-300 transform hover:scale-105;
+  }
+  
+  .btn-nature-outline {
+    @apply border-2 border-nature-primary text-nature-primary px-6 py-3 rounded-lg hover:bg-nature-primary hover:text-white transition-all duration-300;
+  }
+  
+  .card-nature {
+    @apply bg-white rounded-xl shadow-lg p-6 border border-nature-light hover:shadow-xl transition-all duration-300;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-nature-primary to-nature-forest bg-clip-text text-transparent;
+  }
+}

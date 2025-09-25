@@ -1,0 +1,170 @@
+// Nature Theme Variables
+:root {
+  --nature-primary: #2e7d32;
+  --nature-secondary: #66bb6a;
+  --nature-accent: #4caf50;
+  --nature-light: #e8f5e8;
+  --nature-dark: #1b5e20;
+  --nature-earth: #8d6e63;
+  --nature-sky: #81c784;
+  --nature-forest: #388e3c;
+  --nature-leaf: #9ccc65;
+  --nature-moss: #689f38;
+
+  // Gradients
+  --nature-gradient: linear-gradient(
+    135deg,
+    #1e5631 0%,
+    #4c9c4c 50%,
+    #76b947 100%
+  );
+  --forest-gradient: linear-gradient(
+    180deg,
+    #1b5e20 0%,
+    #2e7d32 50%,
+    #4caf50 100%
+  );
+  --leaf-gradient: linear-gradient(45deg, #66bb6a 0%, #81c784 100%);
+}
+
+/* Home Page */
+.home-page {
+  .hero-section {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5),transparent),
+    url("https://images.unsplash.com/photo-1500829243541-74b677fecc30");
+    background-size: cover;
+    background-color: var(--nature-forest);
+  }
+  .plant-counter-section {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5),transparent),
+    url("https://images.unsplash.com/photo-1660648298648-f8c7164e21e6");
+    background-size: cover;
+    background-position: center;
+    background-color: var(--forest-gradient);
+  }
+}
+
+/* About Page */
+.about-page {
+  .hero-section {
+    background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 1)),
+      url("https://images.unsplash.com/photo-1514418197935-e0cac2bb695a");
+    background-size: cover;
+    background-position: center;
+  }
+  .join-us-section {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.2),
+        transparent
+      ),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 6)),
+      url("https://images.unsplash.com/photo-1542601906990-b4d3fb778b09");
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+/* Mobile Naigation Drawer*/
+.navigation-drawer-section {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent),
+    linear-gradient(to right, rgba(0, 0, 0, 0.4), transparent),
+    url("https://images.unsplash.com/photo-1622383563227-04401ab4e5ea");
+  background-size: cover;
+  background-position: center;
+}
+
+// Global Animations
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(0.8) translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes leaf-sway {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+// Utility classes
+.nature-gradient {
+  background: var(--nature-gradient);
+}
+
+.forest-gradient {
+  background: var(--forest-gradient);
+}
+
+.leaf-gradient {
+  background: var(--leaf-gradient);
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-grow {
+  animation: grow 0.6s ease-out;
+}
+
+.animate-leaf-sway {
+  animation: leaf-sway 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--nature-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--nature-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nature-dark);
+}
