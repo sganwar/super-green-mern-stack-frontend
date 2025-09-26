@@ -1,11 +1,16 @@
 // hooks/useCoupon.ts
 import { useQuery } from "@tanstack/react-query";
 
-const API_BASE_URL = "https://super-green-mern-stack-backend.onrender.com";
-// const API_BASE_URL = "http://localhost:5000";
+/*webhook+controller*/
+// const API_BASE_URL = "https://super-green-mern-stack-backend.onrender.com/api/coupon/";
+// const API_BASE_URL = "http://localhost:5000/api/coupon/";
+/* without webhook, single controller*/
+const API_BASE_URL = "https://super-green-mern-stack-backend.onrender.com/api/coupon/instant/";
+// const API_BASE_URL = "http://localhost:5000/api/coupon/instant/";
+
 const fetchCoupon = async (paymentId: string): Promise<{ coupon: string }> => {
   const response = await fetch(
-    `${API_BASE_URL}/api/coupon/${paymentId}`
+    `${API_BASE_URL}${paymentId}`
   );
   if (!response.ok) {
     const error = await response.json();
