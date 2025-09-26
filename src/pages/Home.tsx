@@ -254,7 +254,7 @@ const Home: React.FC = () => {
 
       {/* Plant Selection Section */}
       <Container maxWidth="lg" className="py-16 relative">
-        <Box className="text-center mb-12">
+        <Box className="text-center mb-2">
           <Typography variant="h4" className="text-nature-primary font-bold mb-4 !font-modern">
             Choose Your Green Impact
           </Typography>

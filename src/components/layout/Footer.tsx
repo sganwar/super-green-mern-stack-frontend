@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
 
   return (
     <Box component="footer" className="bg-nature-gradient text-white mt-auto">
-      <Container maxWidth="lg" className="py-10 flex flex-col items-center gap-6">
+      <Container maxWidth="lg" className="py-4 md:py-6 flex flex-col items-center gap-2">
 
         {/* Logo + Brand */}
         <Box className="flex items-center gap-0">
