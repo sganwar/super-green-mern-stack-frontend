@@ -14,21 +14,24 @@ interface Props {
   open: boolean;
   onClose: () => void;
   setPaymentId: (id: string) => void;
+  setLastManualSubmission: (id: string) => void;
 }
 
 export default memo(function ManualCouponFetchModal({
   open,
   onClose,
-  setPaymentId
+  setPaymentId,
+  setLastManualSubmission,
 }: Props) {
   const [id, setId] = useState("");
 
-  const handleSubmit = () => {
-    if (!id.trim()) return;
-    setPaymentId(id.trim());
-    handleClose();
-  };
-
+const handleSubmit = () => {
+  if (!id.trim()) return;
+  const paymentId = id.trim();
+  setLastManualSubmission(paymentId); // 🔥 Track this submission
+  setPaymentId(paymentId);
+  handleClose();
+};
     const handleClose = () => {
     setId(''); // Clear when closing
     onClose(); //use parent onclose fucntion

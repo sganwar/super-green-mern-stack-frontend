@@ -52,6 +52,8 @@ const Home: React.FC = () => {
   const [paymentId, setPaymentId] = useState<string>('');
   const [showManualCouponFetchModal, setShowManualCouponFetchModal] = useState<boolean>(false);
   const [isRazorpayModalOpen, setIsRazorpayModalOpen] = useState<boolean>(false);
+  const [lastManualSubmission, setLastManualSubmission] = useState<string | null>(null);
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -201,12 +203,17 @@ const Home: React.FC = () => {
   }, []);
 
   // if coupon fetching fils in react query
-  useEffect(() => {
-    if (isCouponError) {
-      console.error("Coupon fetch error:", couponError);
-      toast.error("Coupon fetching error, contact support", { duration: 10000, });
-    }
-  }, [isCouponError, couponError]);
+// Modify the error useEffect
+useEffect(() => {
+  if (isCouponError && paymentId && paymentId === lastManualSubmission) {
+    console.error("Coupon fetch error:", couponError);
+    toast.error(couponError?.message || "Coupon fetching error", { 
+      duration: 10000,
+    });
+    // Reset after showing error
+    setLastManualSubmission(null);
+  }
+}, [isCouponError, couponError, paymentId, lastManualSubmission]);
 
   return (
     <Box className="home-page min-h-screen">
@@ -401,12 +408,13 @@ const Home: React.FC = () => {
       </Dialog>
 
       {/* Fetch Coupon Modal */}
-      <Suspense fallback={<Loader/>}>
-      <ManualCouponFetchModal
-        open={showManualCouponFetchModal}
-        onClose={() => setShowManualCouponFetchModal(false)}
-        setPaymentId={setPaymentId} // pass statesetting method that triggers reactqeury
-      />
+      <Suspense fallback={<>Loading</>}>
+   <ManualCouponFetchModal
+  open={showManualCouponFetchModal}
+  onClose={() => setShowManualCouponFetchModal(false)}
+  setPaymentId={setPaymentId}
+  setLastManualSubmission={setLastManualSubmission}
+/>
       </Suspense>
 
       {/* Golden Coupon Modal */}

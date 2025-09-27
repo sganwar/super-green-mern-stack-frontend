@@ -11,8 +11,8 @@ import CustomToasterProvider from './components/ui/CustomToasterProvider.tsx';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 5 * 60 * 1000, // 5 minutes
-      retry: 2,
+      // staleTime: 5 * 60 * 1000, // 5 minutes
+      // retry: 2,
     },
   },
 });
