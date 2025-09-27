@@ -276,7 +276,7 @@ const Home: React.FC = () => {
       </Container>
 
 {/* ✅ Redeem Coupon Section */}
-<Container maxWidth="lg" className="py-12 celebratory-bg">
+<Container maxWidth="lg" className="py-12">
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -286,7 +286,7 @@ const Home: React.FC = () => {
   >
     <Box
       className="flex flex-col md:flex-row items-center justify-between
-                 bg-dark-gradient rounded-lg px-8 py-10 gap-8"
+                 bg-dark-gradient rounded-lg px-8 py-10 gap-8 celebratory-bg"
     >
       <Box className="text-center md:text-left">
         <Typography variant="h4" className="font-bold text-white !tracking-tight !mb-6 !font-mono">
@@ -294,7 +294,7 @@ const Home: React.FC = () => {
         </Typography>
         <Typography variant="body1" className="text-white !align-middle">
           Enter your Payment ID we sent via Email & redeem your 
-          <span className="font-semibold text-nature-dark text-xl whitespace-nowrap"> Super Green Coupon</span>.
+          <span className="font-semibold text-nature-dark text-xl whitespace-nowrap !align-middle"> Super Green Coupon</span>.
         </Typography>
       </Box>
 
