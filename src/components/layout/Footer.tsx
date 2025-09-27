@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
 
   return (
     <Box component="footer" className="bg-nature-gradient text-white mt-auto">
-      <Container maxWidth="lg" className="py-4 md:py-6 flex flex-col items-center gap-2">
+      <Container maxWidth="lg" className="pt-2 md:pt-8  pb-2 flex flex-col items-center gap-2">
 
         {/* Logo + Brand */}
         <Box className="flex items-center gap-0">
@@ -29,8 +29,8 @@ const Footer: React.FC = () => {
         <Box className="h-px w-16 bg-nature-secondary opacity-100"></Box>
 
         {/* Bottom Row */}
-        <Box className="flex flex-col md:flex-row gap-4 items-center text-nature-light text-sm">
-          <Typography variant="body2">
+        <Box className="flex flex-col md:flex-row gap-4 items-center text-nature-light">
+          <Typography variant="body1">
             © 2025 Super Green. All rights reserved.
           </Typography>
 

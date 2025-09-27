@@ -20,13 +20,15 @@ import {
   LocalFlorist as PlantIcon,
   Forest as ForestIcon,
   Close as CloseIcon,
-  WaterDrop as WaterIcon
+  WaterDrop as WaterIcon,
+  Redeem as RedeemIcon
 } from '@mui/icons-material';
+import { motion } from "framer-motion";   // ✅ already tiny + tree-shakable
 import Loader from '../components/ui/Loader';
 import LoaderOverlay from '../components/ui/LoaderOverlay';
 import PlantCounter from '../components/ui/PlantCounter';
 import type {RazorpayPaymentResponse} from '../types/razorpay';
-
+const ManualCouponFetchModal = lazy(()=>import ('../components/ui/ManualCouponFetchModal'));
 const SuperCouponModal = lazy(() => import('../components/ui/SuperCouponModal'));
 const PUBLIC_LOGO = 'https://www.supergreen.co.in/logo.png'; // Public Logo for Razorpay
 const MAXIMUM_TREE_COUNT = 10; // Set a maximum limit for tree planting at a time
@@ -48,6 +50,7 @@ const Home: React.FC = () => {
   const [selectedCount, setSelectedCount] = useState<number>(1);
   const [showDonateForm, setShowDonateForm] = useState<boolean>(false);
   const [paymentId, setPaymentId] = useState<string>('');
+  const [showManualCouponFetchModal, setShowManualCouponFetchModal] = useState<boolean>(false);
   const [isRazorpayModalOpen, setIsRazorpayModalOpen] = useState<boolean>(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -272,6 +275,51 @@ const Home: React.FC = () => {
         </Box>
       </Container>
 
+{/* ✅ Redeem Coupon Section */}
+<Container maxWidth="lg" className="py-12 celebratory-bg">
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true }}
+    className="relative overflow-hidden rounded-xl p-1"
+  >
+    <Box
+      className="flex flex-col md:flex-row items-center justify-between
+                 bg-dark-gradient rounded-lg px-8 py-10 gap-8"
+    >
+      <Box className="text-center md:text-left">
+        <Typography variant="h4" className="font-bold text-white mb-3 !font-mono">
+          Already Donated?
+        </Typography>
+        <Typography variant="body1" className="text-white">
+          Enter your Payment ID we sent via Email & redeem your 
+          <span className="font-semibold text-nature-dark text-xl"> Super Green Coupon</span>.
+        </Typography>
+      </Box>
+
+      <motion.div
+        animate={{ scale: [1, 1.08, 1] }}
+        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+      >
+        <Button
+          onClick={() => setShowManualCouponFetchModal(true)}
+          variant="contained"
+          startIcon={<RedeemIcon />}
+          className="bg-nature-primary hover:bg-nature-dark text-white
+                     font-semibold px-10 py-4 rounded-xl shadow-xl
+                     transition-all duration-300"
+          sx={{ textTransform: "none" }}
+        >
+          Redeem Now
+        </Button>
+      </motion.div>
+    </Box>
+  </motion.div>
+</Container>
+
+
+
       {/* Donation Form Modal */}
       <Dialog
         open={showDonateForm}
@@ -281,16 +329,16 @@ const Home: React.FC = () => {
         PaperProps={{
           sx: {
             borderRadius: '16px'
-          }
+          },
         }}
       >
         <DialogTitle className="text-center bg-nature-gradient text-white" sx={{ pb: 1 }}>
           <Box className="flex justify-between items-center">
-            <Typography variant="h5" className="font-bold">
-              Complete Your Donation
+            <Typography variant="h6" className="font-bold">
+              Donation Form
             </Typography>
-            <IconButton onClick={() => setShowDonateForm(false)} className="text-white">
-              <CloseIcon />
+            <IconButton onClick={() => setShowDonateForm(false)} className="text-white !bg-white">
+              <CloseIcon fontSize='small' />
             </IconButton>
           </Box>
         </DialogTitle>
@@ -305,7 +353,7 @@ const Home: React.FC = () => {
               error={!!formErrors.name}
               helperText={formErrors.name}
               variant="outlined"
-              sx={{ mt: 2 }}
+              className='!mt-4'
             />
 
             <TextField
@@ -352,13 +400,21 @@ const Home: React.FC = () => {
         </DialogContent>
       </Dialog>
 
+      {/* Fetch Coupon Modal */}
+      <Suspense fallback={<Loader/>}>
+      <ManualCouponFetchModal
+        open={showManualCouponFetchModal}
+        onClose={() => setShowManualCouponFetchModal(false)}
+        setPaymentId={setPaymentId} // pass statesetting method that triggers reactqeury
+      />
+      </Suspense>
+
       {/* Golden Coupon Modal */}
       <Suspense fallback={<Loader />}>
         <SuperCouponModal
           open={!!couponData && !isCouponLoading} // Show only when coupon data is available and coupon is not loading (react query)
           onClose={() => {
             setPaymentId(''); // Reset payment ID
-
           }}
           couponCode={couponData?.coupon || ''}
           treeCount={selectedCount}

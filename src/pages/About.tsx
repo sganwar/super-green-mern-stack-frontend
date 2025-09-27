@@ -230,8 +230,8 @@ const About: React.FC = React.memo(() => {
         {/* Inspirational Quotes end */}
 
         {/* Call to Action */}
-        <Box className="join-us-section text-center bg-nature-gradient py-12 px-6 rounded-2xl text-white shadow-2xl flex flex-col items-center">
-          <Typography variant="h4" className="font-bold mb-6 !font-elegant">
+        <Box className="join-us-section text-center bg-nature-gradient py-8 px-6 rounded-2xl text-white shadow-2xl flex flex-col items-center">
+          <Typography variant="h4" className="font-bold pb-6">
             Join Our Green Revolution
           </Typography>
 

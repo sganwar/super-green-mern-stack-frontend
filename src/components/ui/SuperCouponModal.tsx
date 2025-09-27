@@ -95,7 +95,7 @@ const SuperCouponModal: React.FC<SuperCouponModalProps> = memo(({
         </Box>
 
         {/* Close Button */}
-        <Box className="absolute top-2 right-2 z-50" sx={{ top: { xs: 1, sm: 4 }, right: { xs: 1, sm: 4 } }}>
+        <Box className="absolute top-2 right-2 z-50" sx={{ top: { xs: 8, sm: 8 }, right: { xs: 8, sm: 8 } }}>
           <IconButton
             onClick={onClose}
             className="bg-white shadow-lg"

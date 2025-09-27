@@ -13,7 +13,8 @@ export default {
         'elegant': ['Playfair Display', 'serif'], // Premium/Logo text
         'modern': ['Manrope', 'system-ui', 'sans-serif'], // Subtle headings
         'minimal': ['Figtree', 'system-ui', 'sans-serif'], // Clean UI text
-        'fancy': ['Dancing Script', 'cursive'], // Decorative text
+        'fancy': ['Pacifico', 'cursive'],
+        'mono': ['Source Code Pro', 'monospace']
       },
       colors: {
         nature: {
@@ -33,6 +34,7 @@ export default {
         'nature-gradient': 'var(--nature-gradient)',
         'forest-gradient': 'var(--forest-gradient)',
         'leaf-gradient': 'var(--leaf-gradient)',
+        'dark-gradient': 'var(--dark-gradient)'
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',
