@@ -289,12 +289,12 @@ const Home: React.FC = () => {
                  bg-dark-gradient rounded-lg px-8 py-10 gap-8"
     >
       <Box className="text-center md:text-left">
-        <Typography variant="h4" className="font-bold text-white mb-3 !font-mono">
+        <Typography variant="h4" className="font-bold text-white !tracking-tight !mb-6 !font-mono">
           Already Donated?
         </Typography>
-        <Typography variant="body1" className="text-white">
+        <Typography variant="body1" className="text-white !align-middle">
           Enter your Payment ID we sent via Email & redeem your 
-          <span className="font-semibold text-nature-dark text-xl"> Super Green Coupon</span>.
+          <span className="font-semibold text-nature-dark text-xl whitespace-nowrap"> Super Green Coupon</span>.
         </Typography>
       </Box>
 
