@@ -408,7 +408,7 @@ const Home: React.FC = () => {
       </Dialog>
 
       {/* Fetch Coupon Modal */}
-      <Suspense fallback={<>Loading</>}>
+      <Suspense fallback={<></>}>
         <ManualCouponFetchModal
           open={showManualCouponFetchModal}
           onClose={() => setShowManualCouponFetchModal(false)}
@@ -418,7 +418,7 @@ const Home: React.FC = () => {
       </Suspense>
 
       {/* Golden Coupon Modal */}
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<></>}>
         <SuperCouponModal
           open={!!couponData && !isCouponLoading} // Show only when coupon data is available and coupon is not loading (react query)
           onClose={() => {
