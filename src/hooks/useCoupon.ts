@@ -5,17 +5,28 @@ import { useQuery } from "@tanstack/react-query";
 // const API_BASE_URL = "https://super-green-mern-stack-backend.onrender.com/api/coupon/";
 // const API_BASE_URL = "http://localhost:5000/api/coupon/";
 /* without webhook, single controller*/
-const API_BASE_URL = "https://super-green-mern-stack-backend.onrender.com/api/coupon/instant/";
+const API_BASE_URL =
+  "https://super-green-mern-stack-backend.onrender.com/api/coupon/instant/";
 // const API_BASE_URL = "http://localhost:5000/api/coupon/instant/";
 
 const fetchCoupon = async (paymentId: string): Promise<{ coupon: string }> => {
   const response = await fetch(`${API_BASE_URL}${paymentId}`);
-  
+
   if (!response.ok) {
     const error = await response.json();
-    throw new Error(error.message || "Failed to fetch coupon");
+    let errorMessage = "";
+    if (response.status == 400) {
+      errorMessage = "Invalid or incomplete payment";
+    } else if (response.status == 503) {
+      errorMessage =
+        "We are temporarily out of coupon codes. Your payment was successful, please contact support with your payment ID to receive your coupon";
+    } else {
+      errorMessage =
+        error.message || "Failed to fetch coupon. Please try again.";
+    }
+    throw new Error(errorMessage);
   }
-  
+
   return await response.json();
 };
 
@@ -37,7 +48,6 @@ const fetchCoupon = async (paymentId: string): Promise<{ coupon: string }> => {
 //   });
 // };
 
-
 export const useCoupon = (paymentId: string | null) => {
   return useQuery({
     queryKey: ["coupon", paymentId],
@@ -52,7 +62,7 @@ export const useCoupon = (paymentId: string | null) => {
     retryDelay: 3000,
     staleTime: Infinity,
     gcTime: 1000 * 60 * 60 * 24,
-    
+
     // 🔥 ADD THIS: Force refetch for same query key
     refetchOnMount: true, // Always refetch when component mounts
     refetchOnWindowFocus: false, // Don't refetch on window focus

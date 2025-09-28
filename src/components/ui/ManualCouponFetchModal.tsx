@@ -1,3 +1,6 @@
+
+
+
 import { useState, memo } from "react";
 import {
   Dialog,
@@ -25,14 +28,14 @@ export default memo(function ManualCouponFetchModal({
 }: Props) {
   const [id, setId] = useState("");
 
-const handleSubmit = () => {
-  if (!id.trim()) return;
-  const paymentId = id.trim();
-  setLastManualSubmission(paymentId); // 🔥 Track this submission
-  setPaymentId(paymentId);
-  handleClose();
-};
-    const handleClose = () => {
+  const handleSubmit = () => {
+    if (!id.trim()) return;
+    const paymentId = id.trim();
+    setLastManualSubmission(paymentId); // 🔥 Track this submission
+    setPaymentId(paymentId);
+    handleClose();
+  };
+  const handleClose = () => {
     setId(''); // Clear when closing
     onClose(); //use parent onclose fucntion
   };

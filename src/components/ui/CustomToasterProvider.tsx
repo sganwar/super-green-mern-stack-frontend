@@ -13,7 +13,7 @@ const CustomToasterProvider = () => {
       {(t) => (
         <ToastBar toast={t}>
           {({ icon, message }) => (
-            <>
+            <div className="flex flex-wrap justify-center">
               {icon}
               {message}
               {t.type !== 'loading' && (
@@ -24,7 +24,7 @@ const CustomToasterProvider = () => {
                   &times;
                 </button>
               )}
-            </>
+            </div>
           )}
         </ToastBar>
       )}

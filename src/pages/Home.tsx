@@ -27,8 +27,8 @@ import { motion } from "framer-motion";   // ✅ already tiny + tree-shakable
 import Loader from '../components/ui/Loader';
 import LoaderOverlay from '../components/ui/LoaderOverlay';
 import PlantCounter from '../components/ui/PlantCounter';
-import type {RazorpayPaymentResponse} from '../types/razorpay';
-const ManualCouponFetchModal = lazy(()=>import ('../components/ui/ManualCouponFetchModal'));
+import type { RazorpayPaymentResponse } from '../types/razorpay';
+const ManualCouponFetchModal = lazy(() => import('../components/ui/ManualCouponFetchModal'));
 const SuperCouponModal = lazy(() => import('../components/ui/SuperCouponModal'));
 const PUBLIC_LOGO = 'https://www.supergreen.co.in/logo.png'; // Public Logo for Razorpay
 const MAXIMUM_TREE_COUNT = 10; // Set a maximum limit for tree planting at a time
@@ -203,17 +203,17 @@ const Home: React.FC = () => {
   }, []);
 
   // if coupon fetching fils in react query
-// Modify the error useEffect
-useEffect(() => {
-  if (isCouponError && paymentId && paymentId === lastManualSubmission) {
-    console.error("Coupon fetch error:", couponError);
-    toast.error(couponError?.message || "Coupon fetching error", { 
-      duration: 10000,
-    });
-    // Reset after showing error
-    setLastManualSubmission(null);
-  }
-}, [isCouponError, couponError, paymentId, lastManualSubmission]);
+  // Modify the error useEffect
+  useEffect(() => {
+    if (isCouponError && paymentId && paymentId === lastManualSubmission) {
+      console.error("Coupon fetch error:", couponError);
+      toast.error(couponError?.message || "Coupon fetching error", {
+        duration: 600000,
+      });
+      // Reset after showing error
+      setLastManualSubmission(null);
+    }
+  }, [isCouponError, couponError, paymentId, lastManualSubmission]);
 
   return (
     <Box className="home-page min-h-screen">
@@ -275,55 +275,55 @@ useEffect(() => {
 
         <Box className="max-w-2xl mx-auto">
           <PlantCounter
-  selectedCount={selectedCount}
-  adjustCount={adjustCount}
-  onDonateClick={() => setShowDonateForm(true)}
-/>
+            selectedCount={selectedCount}
+            adjustCount={adjustCount}
+            onDonateClick={() => setShowDonateForm(true)}
+          />
         </Box>
       </Container>
 
-{/* ✅ Redeem Coupon Section */}
-<Container maxWidth="lg" className="py-12">
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6 }}
-    viewport={{ once: true }}
-    className="relative overflow-hidden rounded-xl p-1"
-  >
-    <Box
-      className="flex flex-col md:flex-row items-center justify-between
+      {/* ✅ Redeem Coupon Section */}
+      <Container maxWidth="lg" className="py-12">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="relative overflow-hidden rounded-xl p-1"
+        >
+          <Box
+            className="flex flex-col md:flex-row items-center justify-between
                  bg-dark-gradient rounded-lg px-8 py-10 gap-8 celebratory-bg"
-    >
-      <Box className="text-center md:text-left">
-        <Typography variant="h4" className="font-bold text-white !tracking-tight !mb-6 !font-mono">
-          Already Donated?
-        </Typography>
-        <Typography variant="body1" className="text-white !align-middle">
-          Enter your Payment ID we sent via Email & redeem your 
-          <span className="font-semibold text-nature-dark text-xl whitespace-nowrap !align-middle"> Super Green Coupon</span>.
-        </Typography>
-      </Box>
+          >
+            <Box className="text-center md:text-left">
+              <Typography variant="h4" className="font-bold text-white !tracking-tight !mb-6 !font-mono">
+                Already Donated?
+              </Typography>
+              <Typography variant="body1" className="text-white !align-middle">
+                Enter your Payment ID we sent via Email & redeem your
+                <span className="font-semibold text-nature-dark text-xl whitespace-nowrap !align-middle"> Super Green Coupon</span>.
+              </Typography>
+            </Box>
 
-      <motion.div
-        animate={{ scale: [1, 1.08, 1] }}
-        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
-      >
-        <Button
-          onClick={() => setShowManualCouponFetchModal(true)}
-          variant="contained"
-          startIcon={<RedeemIcon />}
-          className="bg-nature-primary hover:bg-nature-dark text-white
+            <motion.div
+              animate={{ scale: [1, 1.08, 1] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            >
+              <Button
+                onClick={() => setShowManualCouponFetchModal(true)}
+                variant="contained"
+                startIcon={<RedeemIcon />}
+                className="bg-nature-primary hover:bg-nature-dark text-white
                      font-semibold px-10 py-4 rounded-xl shadow-xl
                      transition-all duration-300"
-          sx={{ textTransform: "none" }}
-        >
-          Redeem Now
-        </Button>
-      </motion.div>
-    </Box>
-  </motion.div>
-</Container>
+                sx={{ textTransform: "none" }}
+              >
+                Redeem Now
+              </Button>
+            </motion.div>
+          </Box>
+        </motion.div>
+      </Container>
 
 
 
@@ -409,12 +409,12 @@ useEffect(() => {
 
       {/* Fetch Coupon Modal */}
       <Suspense fallback={<>Loading</>}>
-   <ManualCouponFetchModal
-  open={showManualCouponFetchModal}
-  onClose={() => setShowManualCouponFetchModal(false)}
-  setPaymentId={setPaymentId}
-  setLastManualSubmission={setLastManualSubmission}
-/>
+        <ManualCouponFetchModal
+          open={showManualCouponFetchModal}
+          onClose={() => setShowManualCouponFetchModal(false)}
+          setPaymentId={setPaymentId}
+          setLastManualSubmission={setLastManualSubmission}
+        />
       </Suspense>
 
       {/* Golden Coupon Modal */}
