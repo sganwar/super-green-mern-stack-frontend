@@ -239,7 +239,7 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <Box className="relative overflow-hidden hero-section">
         <Container maxWidth="lg" className="relative py-16">
-          <Box className="text-center space-y-6 flex flex-col items-center">
+          <Box className="text-center space-y-4 flex flex-col items-center">
             <Fade in={true} timeout={1000}>
               <Typography
                 variant="h2"
@@ -253,7 +253,7 @@ const Home: React.FC = () => {
             <Fade in={true} timeout={1500}>
               <Typography
                 variant="h5"
-                className="text-white mb-8 max-w-3xl mx-auto text-center text-xl md:text-2xl !font-body"
+                className="text-white max-w-3xl mx-auto text-center text-xl md:text-2xl !font-body"
               >
                 🌱 Every seed we plant today grows into tomorrow's oxygen. Join us in creating a greener,
                 cleaner world - one tree at a time.
@@ -264,7 +264,7 @@ const Home: React.FC = () => {
           onClick={() => plantCounterSectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
           variant="contained"
           size="large"
-          className="!bg-white !text-nature-primary !font-bold !font-mono !text-xl !px-2 !py-0 rounded-lg shadow-white-1000/80 transform hover:scale-105 transition-all duration-300"
+          className="!tracking-tight !bg-white !text-nature-primary !font-bold !font-mono !text-xl !px-2 !py-0 !mb-4 rounded-lg shadow-white-1000/80 transform hover:scale-105 transition-all duration-300"
           sx={{ textTransform: 'none' }}
           // startIcon={<CurrencyRupeeIcon />}
           endIcon={
@@ -278,7 +278,7 @@ const Home: React.FC = () => {
           Donate Now
         </Button>
 
-            <Box className="flex justify-center gap-8 mb-8 flex-wrap text-white">
+            <Box className="flex justify-center gap-4 mb-8 flex-wrap text-white">
               {STATS_DATA.map((stat, index) => (
                 <Grow in={true} timeout={1000 + index * 200} key={index}>
                   <Chip
