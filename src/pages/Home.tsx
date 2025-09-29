@@ -220,14 +220,14 @@ const Home: React.FC = () => {
 
 
   // useefect for navigating to plant counter section initially
-  // useEffect(() => {
-  //   // Scroll to other section on page load
-  //   const timer = setTimeout(()=>{
+  useEffect(() => {
+    // Scroll to other section on page load
+    const timer = setTimeout(()=>{
 
-  //     plantCounterSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
-  //   },3000)
-  //   return ()=>clearTimeout(timer)
-  // }, []);
+      plantCounterSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+    },3000)
+    return ()=>clearTimeout(timer)
+  }, []);
 
   
   return (
