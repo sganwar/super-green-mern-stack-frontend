@@ -260,7 +260,7 @@ const Home: React.FC = () => {
               </Typography>
             </Fade>
 
-        <Button
+        <Button 
           onClick={() => plantCounterSectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
           variant="contained"
           size="large"
@@ -269,7 +269,7 @@ const Home: React.FC = () => {
           // startIcon={<CurrencyRupeeIcon />}
           endIcon={
             <motion.div
-       animate={{ y: [0, 4, 0] }}
+       animate={{ y: [0, -2,2, 0] }}
        transition={{ repeat: Infinity, duration: 2 }}
      >
           <KeyboardDoubleArrowDownIcon fontSize='large'/>
@@ -278,7 +278,7 @@ const Home: React.FC = () => {
           Donate Now
         </Button>
 
-            <Box className="flex justify-center gap-4 mb-8 flex-wrap text-white">
+            <Box className="flex justify-center gap-4 mb-8 !mt-16 flex-wrap text-white">
               {STATS_DATA.map((stat, index) => (
                 <Grow in={true} timeout={1000 + index * 200} key={index}>
                   <Chip
