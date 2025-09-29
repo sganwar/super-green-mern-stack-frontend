@@ -22,11 +22,11 @@ import {
   Close as CloseIcon,
   WaterDrop as WaterIcon,
   Redeem as RedeemIcon,
-  CurrencyRupee as CurrencyRupeeIcon,
+  // CurrencyRupee as CurrencyRupeeIcon,
   KeyboardDoubleArrowDown as KeyboardDoubleArrowDownIcon,
 } from '@mui/icons-material';
 import { motion } from "framer-motion";   // ✅ already tiny + tree-shakable
-import Loader from '../components/ui/Loader';
+// import Loader from '../components/ui/Loader';
 import LoaderOverlay from '../components/ui/LoaderOverlay';
 import PlantCounter from '../components/ui/PlantCounter';
 import type { RazorpayPaymentResponse } from '../types/razorpay';
