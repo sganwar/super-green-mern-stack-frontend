@@ -83,7 +83,7 @@ const SuperCouponModal: React.FC<SuperCouponModalProps> = memo(({
           background: 'transparent',
           boxShadow: 'none',
           overflow: 'visible',
-          maxHeight: { xs: '90vh', sm: 'none' },
+          maxHeight: { xs: '90vh', sm: '90vh' },
           margin: { xs: 1, sm: 3 }
         }
       }}
@@ -113,12 +113,12 @@ const SuperCouponModal: React.FC<SuperCouponModalProps> = memo(({
 
         {/* Celebration Header */}
         <Zoom in={showCelebration} timeout={800}>
-          <Box className="text-center mb-4" sx={{ mb: { xs: 2, sm: 6 }, pt: { xs: 4, sm: 8 } }}>
+          <Box className="text-center mb-4" sx={{ mb: { xs: 2, sm: 2 }, pt: { xs: 3, sm: 3 } }}>
             <CelebrationIcon
               className="text-4xl text-yellow-500 animate-bounce mb-2"
               sx={{ fontSize: { xs: '3rem', sm: '4rem' } }}
             />
-            <Typography variant="h5" className="text-white font-bold mb-1" sx={{ fontSize: { xs: '1.3rem', sm: '2rem' } }}>
+            <Typography variant="h5" className="text-white font-bold" sx={{ fontSize: { xs: '1.3rem', sm: '2rem' } }}>
               🎉 Payment Successful! 🎉
             </Typography>
             <Typography variant="body1" className="text-white opacity-90" sx={{ fontSize: { xs: '0.9rem', sm: '1.1rem' } }}>
@@ -148,7 +148,7 @@ const SuperCouponModal: React.FC<SuperCouponModalProps> = memo(({
               />
 
               {/* Ticket Content */}
-              <Box className="relative p-4 text-center" sx={{ p: { xs: 4, sm: 8 } }}>
+              <Box className="relative p-4 text-center" sx={{ p: { xs: 4, sm: 4 } }}>
                 {/* Header */}
                 <Typography
                   variant="h6"
@@ -166,7 +166,7 @@ const SuperCouponModal: React.FC<SuperCouponModalProps> = memo(({
                 </Typography>
 
                 {/* Coupon Code Section */}
-                <Box className="bg-yellow-800 bg-opacity-20 rounded-xl p-3 mb-3 border-2 border-yellow-700 border-dashed" sx={{ p: { xs: 2, sm: 4 } }}>
+                <Box className="bg-yellow-800 bg-opacity-20 rounded-xl p-3 mb-3 border-2 border-yellow-700 border-dashed" sx={{ p: { xs: 2, sm: 2 } }}>
                   <Typography
                     variant="h4"
                     className="font-mono font-bold text-yellow-900 mb-2 tracking-widest"
@@ -249,6 +249,7 @@ const SuperCouponModal: React.FC<SuperCouponModalProps> = memo(({
         </Fade>
 
         {/* Gradient Background */}
+      </DialogContent>
         <Box
           className="absolute inset-0 -z-20 rounded-2xl"
           style={{
@@ -256,7 +257,6 @@ const SuperCouponModal: React.FC<SuperCouponModalProps> = memo(({
             filter: 'blur(1px)'
           }}
         />
-      </DialogContent>
     </Dialog>
   );
 });

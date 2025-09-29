@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, lazy, Suspense } from 'react';
+import React, { useState, useEffect, useCallback, lazy, Suspense,useRef } from 'react';
 import toast from 'react-hot-toast';
 import { useCoupon } from '../hooks/useCoupon';
 import { useLocation } from 'react-router-dom';
@@ -21,7 +21,9 @@ import {
   Forest as ForestIcon,
   Close as CloseIcon,
   WaterDrop as WaterIcon,
-  Redeem as RedeemIcon
+  Redeem as RedeemIcon,
+  CurrencyRupee as CurrencyRupeeIcon,
+  KeyboardDoubleArrowDown as KeyboardDoubleArrowDownIcon,
 } from '@mui/icons-material';
 import { motion } from "framer-motion";   // ✅ already tiny + tree-shakable
 import Loader from '../components/ui/Loader';
@@ -53,6 +55,7 @@ const Home: React.FC = () => {
   const [showManualCouponFetchModal, setShowManualCouponFetchModal] = useState<boolean>(false);
   const [isRazorpayModalOpen, setIsRazorpayModalOpen] = useState<boolean>(false);
   const [lastManualSubmission, setLastManualSubmission] = useState<string | null>(null);
+  const plantCounterSectionRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -215,6 +218,18 @@ const Home: React.FC = () => {
     }
   }, [isCouponError, couponError, paymentId, lastManualSubmission]);
 
+
+  // useefect for navigating to plant counter section initially
+  // useEffect(() => {
+  //   // Scroll to other section on page load
+  //   const timer = setTimeout(()=>{
+
+  //     plantCounterSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+  //   },3000)
+  //   return ()=>clearTimeout(timer)
+  // }, []);
+
+  
   return (
     <Box className="home-page min-h-screen">
 
@@ -245,6 +260,24 @@ const Home: React.FC = () => {
               </Typography>
             </Fade>
 
+        <Button
+          onClick={() => plantCounterSectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
+          variant="contained"
+          size="large"
+          className="!bg-white !text-nature-primary !font-bold !font-mono !text-xl !px-2 !py-0 rounded-lg shadow-white-1000/80 transform hover:scale-105 transition-all duration-300"
+          sx={{ textTransform: 'none' }}
+          // startIcon={<CurrencyRupeeIcon />}
+          endIcon={
+            <motion.div
+       animate={{ y: [0, 4, 0] }}
+       transition={{ repeat: Infinity, duration: 2 }}
+     >
+          <KeyboardDoubleArrowDownIcon fontSize='large'/>
+          </motion.div>
+        }>
+          Donate Now
+        </Button>
+
             <Box className="flex justify-center gap-8 mb-8 flex-wrap text-white">
               {STATS_DATA.map((stat, index) => (
                 <Grow in={true} timeout={1000 + index * 200} key={index}>
@@ -263,7 +296,7 @@ const Home: React.FC = () => {
       </Box>
 
       {/* Plant Selection Section */}
-      <Container maxWidth="lg" className="py-16 relative">
+      <Container id="donate" ref={plantCounterSectionRef} maxWidth="lg" className="py-16 relative">
         <Box className="text-center mb-2">
           <Typography variant="h4" className="text-nature-primary font-bold mb-4 !font-modern">
             Choose Your Green Impact
