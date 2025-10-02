@@ -66,7 +66,7 @@ const PlantCounter: React.FC<PlantCounterProps> = React.memo(
 
     return (
       <Grow in={true} timeout={800}>
-        <Card className="bg-white shadow-2xl border border-nature-light mb-8 !rounded-lg">
+        <Card className="bg-white shadow-2xl mb-8 !rounded-lg">
           <CardContent className="plant-counter-section p-8">
             <Box className="text-center mb-6">
               <Typography variant="h5" className="text-white font-bold pb-4">

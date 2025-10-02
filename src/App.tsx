@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 const Home = lazy(() => import('./pages/Home'));
 const About = lazy(() => import('./pages/About'));
+const Products = lazy(()=> import ('./pages/Products'));
 import Loader from './components/ui/Loader';
 import './assets/styles/global.scss'
 
@@ -16,12 +17,12 @@ function App() {
         <div className="min-h-screen bg-nature-light flex flex-col">
           <Navbar />
           <main className="flex-grow">
-            <Suspense fallback={<Loader />}>
+            
               <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
+                <Route path="/" element={<Suspense fallback={<Loader />}><Home /></Suspense>} />
+                <Route path="/about" element={<Suspense fallback={<Loader />}><About /></Suspense>} />
+                <Route path="/products" element={<Suspense fallback={<Loader />}><Products /></Suspense>} />
               </Routes>
-            </Suspense>
           </main>
           <Footer />
         </div>

@@ -14,7 +14,8 @@ import {
   IconButton,
   Dialog,
   DialogContent,
-  DialogTitle
+  DialogTitle,
+    Grid,
 } from '@mui/material';
 import {
   LocalFlorist as PlantIcon,
@@ -22,6 +23,7 @@ import {
   Close as CloseIcon,
   WaterDrop as WaterIcon,
   Redeem as RedeemIcon,
+  EmojiEvents as TrophyIcon,
   // CurrencyRupee as CurrencyRupeeIcon,
   KeyboardDoubleArrowDown as KeyboardDoubleArrowDownIcon,
 } from '@mui/icons-material';
@@ -259,12 +261,12 @@ const Home: React.FC = () => {
                 cleaner world - one tree at a time.
               </Typography>
             </Fade>
-
+{/* Feature hidden */}
         <Button 
           onClick={() => plantCounterSectionRef.current?.scrollIntoView({ behavior: 'smooth' })}
           variant="contained"
           size="large"
-          className="!tracking-tight !bg-white !text-nature-primary !font-bold !font-mono !text-xl !px-2 !py-0 !mb-4 rounded-lg shadow-white-1000/80 transform hover:scale-105 transition-all duration-300"
+          className="!hidden !tracking-tight !bg-white !text-nature-primary !font-bold !font-mono !text-xl !px-2 !py-0 !mb-4 rounded-lg shadow-white-1000/80 transform hover:scale-105 transition-all duration-300"
           sx={{ textTransform: 'none' }}
           // startIcon={<CurrencyRupeeIcon />}
           endIcon={
@@ -295,8 +297,103 @@ const Home: React.FC = () => {
         </Container>
       </Box>
 
-      {/* Plant Selection Section */}
-      <Container id="donate" ref={plantCounterSectionRef} maxWidth="lg" className="py-16 relative">
+     
+      <Container maxWidth="lg" className="py-16 relative">
+          <Grid container spacing={4} alignItems="end">
+        {/* Left Side - Super Gold App Info */}
+<Grid size={{xs:12,md:6}}>
+  <Box id="super-gold-app-info-section" className="p-6 md:p-8 rounded-xl">
+    {/* Modern Hero Header */}
+    <Box className="mb-8">
+      <Box className="flex items-center gap-3 mb-4">
+        <Box className="w-12 h-12 rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-600 flex items-center justify-center shadow-lg transform hover:scale-105 transition-transform">
+          <TrophyIcon className="text-white text-2xl" />
+        </Box>
+        <Typography variant="h4" className="font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-amber-700">
+          Super Gold Rewards
+        </Typography>
+      </Box>
+      
+      <Typography variant="h5" className="font-bold text-gray-1000 mb-2">
+        Plant Trees. Earn Rewards.
+      </Typography>
+      
+      <Typography variant="body1" className="text-black leading-relaxed">
+        Transform your environmental impact into exclusive gaming benefits
+      </Typography>
+    </Box>
+
+    {/* Modern Step Cards */}
+    <Box className="space-y-4 mb-8">
+      <Box className="group hover:translate-x-2 transition-all duration-300">
+        <Box className="flex items-start gap-4">
+          <Box className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-green-600 text-white flex items-center justify-center font-bold text-lg shadow-md flex-shrink-0 group-hover:scale-110 transition-transform">
+            1
+          </Box>
+          <Box className="flex-1">
+            <Typography variant="h6" className="font-bold text-black mb-1">
+              Plant & Contribute
+            </Typography>
+            <Typography variant="body1" className="text-black">
+              Support reforestation with your donation
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box className="group hover:translate-x-2 transition-all duration-300">
+        <Box className="flex items-start gap-4">
+          <Box className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-400 to-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-md flex-shrink-0 group-hover:scale-110 transition-transform">
+            2
+          </Box>
+          <Box className="flex-1">
+            <Typography variant="h6" className="font-bold text-black mb-1">
+              Get Your Coupon
+            </Typography>
+            <Typography variant="body1" className="text-black">
+              Receive exclusive Super Green code instantly
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+
+      <Box className="group hover:translate-x-2 transition-all duration-300">
+        <Box className="flex items-start gap-4">
+          <Box className="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-600 text-white flex items-center justify-center font-bold text-lg shadow-md flex-shrink-0 group-hover:scale-110 transition-transform">
+            3
+          </Box>
+          <Box className="flex-1">
+            <Typography variant="h6" className="font-bold text-black mb-1">
+              Play & Earn
+            </Typography>
+            <Typography variant="body1" className="text-black">
+              Redeem in <span className="font-bold">Super Gold App</span> for rewards
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+
+    {/* Modern Benefit Card */}
+    <Box className="relative overflow-hidden rounded-2xl p-5 backdrop-blur-md bg-white/60 shadow-lg">
+      <Box className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-yellow-200/30 to-transparent rounded-bl-full" />
+      
+      <Box className="relative z-10">
+        <Box className="flex items-center gap-2 mb-3">
+          <RedeemIcon className="text-yellow-600" />
+          <Typography variant="subtitle2" className="font-bold text-gray-800 uppercase tracking-wider text-sm">
+            Double Impact
+          </Typography>
+        </Box>
+        <Typography variant="body2" className="text-gray-700 leading-relaxed">
+          Every donation funds environmental conservation while unlocking exclusive gaming rewards
+        </Typography>
+      </Box>
+    </Box>
+  </Box>
+</Grid>
+         {/* Right side - Plant Selection Section */}
+         <Grid ref={plantCounterSectionRef} size={{xs:12,md:6}}>
         <Box className="text-center mb-2">
           <Typography variant="h4" className="text-nature-primary font-bold mb-4 !font-modern">
             Choose Your Green Impact
@@ -313,10 +410,12 @@ const Home: React.FC = () => {
             onDonateClick={() => setShowDonateForm(true)}
           />
         </Box>
+        </Grid>
+        </Grid>
       </Container>
 
       {/* ✅ Redeem Coupon Section */}
-      <Container maxWidth="lg" className="py-12">
+      <Container id="donate" maxWidth="lg" className="py-16 relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -329,7 +428,7 @@ const Home: React.FC = () => {
                  bg-dark-gradient rounded-lg px-8 py-10 gap-8 celebratory-bg"
           >
             <Box className="text-center md:text-left">
-              <Typography variant="h4" className="font-bold text-white !tracking-tight !mb-6 !font-mono">
+              <Typography variant="h4" className="font-bold text-white !tracking-tighter !mb-6 !font-mono">
                 Already Donated?
               </Typography>
               <Typography variant="body1" className="text-white !align-middle">

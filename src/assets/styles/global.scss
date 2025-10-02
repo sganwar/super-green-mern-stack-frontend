@@ -80,8 +80,22 @@
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent),
     linear-gradient(to right, rgba(0, 0, 0, 0.4), transparent),
     url("https://images.unsplash.com/photo-1622383563227-04401ab4e5ea");
-  background-size: cover;
+  background-size: contain;
   background-position: center;
+}
+
+/* super-gold-app-info-section */
+#super-gold-app-info-section{
+background-image: 
+//  radial-gradient(ellipse at center, rgba(153, 153, 141, 0.582) 0%, rgba(0, 0, 0, 0) 70%), /* Darker in middle, fades out */
+//  radial-gradient(ellipse at center, rgba(124, 115, 115, 0.5) 30%, transparent 50%),  
+//  linear-gradient(to right, rgba(175, 160, 160, 0.5), transparent), 
+url(./../images/gold-bar-with-gold-coin.png);
+background-size: contain;
+background-repeat: no-repeat;
+background-position: right center ;
+//  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  // background-blend-mode: hue;
 }
 
 // Global Animations
