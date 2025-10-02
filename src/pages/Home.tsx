@@ -107,8 +107,8 @@ const Home: React.FC = () => {
     const options = {
       "key": "rzp_live_RJpArHowLAOS2l", // live mode public key
       // "key": "rzp_test_RJp1B7TPct9hmi", //test mode public key
-      // "amount": (calculatePrice(selectedCount) * 100).toString(), //live mdoe
-      "amount": 100, //test mode
+      "amount": (calculatePrice(selectedCount) * 100).toString(), //live mdoe
+      // "amount": 100, //test mode
       "name": "Super Green NGO",
       "image": PUBLIC_LOGO,
       "description": `Plant ${selectedCount} Tree${selectedCount > 1 ? 's' : ''}`,
