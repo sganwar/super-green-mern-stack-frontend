@@ -21,7 +21,8 @@ import {
   TrendingUp as TrendingUpIcon,
   Shop as ShopIcon,
 } from '@mui/icons-material';
-
+import SuperIAppIcon from './../assets/images/super-i-app-icon.jpg'
+import SuperGoldAppIcon from './../assets/images/super-gold-app-icon.png'
 // Product Data Array - Easy to modify/add products
 const PRODUCTS = [
   {
@@ -33,7 +34,7 @@ const PRODUCTS = [
     rating: 4.9,
     size: '209 MB',
     ageRating: '3+',
-    icon: 'https://play-lh.googleusercontent.com/dYry3LkJLIU--2oPBTPCqlmdng_KesU7QjXaoTL1PF2rH3UVTEsUwZi7LiDW62rx_d3E',
+    icon: SuperIAppIcon,
     bgGradient: 'from-blue-500 to-indigo-600',
     accentColor: 'bg-blue-500',
     productLink:'https://play.google.com/store/apps/details?id=com.superchild.sc365&pcampaignid=web_share'
@@ -47,7 +48,7 @@ const PRODUCTS = [
     rating: 5.0,
     size: '171 MB',
     ageRating: '3+',
-    icon: 'https://play-lh.googleusercontent.com/2DSdj_rZAwkupq0NSrEUkfgwskLhTcl07tEYtHiJ6ZkJH5DO_u-G239n2Jx2vDZGnU1f',
+    icon: SuperGoldAppIcon,
     bgGradient: 'from-amber-400 to-yellow-600',
     accentColor: 'bg-yellow-500',
     productLink:'https://play.google.com/store/apps/details?id=com.superbillionaire.game&pcampaignid=web_share',

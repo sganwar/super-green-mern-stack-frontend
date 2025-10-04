@@ -393,9 +393,9 @@ const Home: React.FC = () => {
   </Box>
 </Grid>
          {/* Right side - Plant Selection Section */}
-         <Grid ref={plantCounterSectionRef} size={{xs:12,md:6}}>
-        <Box className="text-center mb-2">
-          <Typography variant="h4" className="text-nature-primary font-bold mb-4 !font-modern">
+         <Grid size={{xs:12,md:6}}>
+        <Box ref={plantCounterSectionRef} className="text-center mb-2 pt-16">
+          <Typography variant="h4" className="!tracking-tight text-nature-primary font-bold mb-4 !font-modern">
             Choose Your Green Impact
           </Typography>
           <Typography variant="h6" className="text-nature-dark">
